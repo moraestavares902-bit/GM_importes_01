@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GM IMPORTS | Streetwear & Sneakers Exclusivos</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Syne (Display/Streetwear) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#09090B',
+                            card: '#121215',
+                            border: '#27272A',
+                            accent: '#FF4D00', // Laranja Streetwear Vibrante
+                            accentHover: '#E04400',
+                            neon: '#CCFF00' // Detalhe secundário
+                        }
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF4D00;
+        }
+
+        /* Efeito de vidro no Header */
+        .glass-header {
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Animação suave nos cards */
+        .product-card:hover .product-img {
+            transform: scale(1.07);
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-zinc-100 font-sans antialiased selection:bg-brand-accent selection:text-white overflow-x-hidden">
+
+    <!-- Faixa Promocional Animada (Top Bar) -->
+    <div class="bg-brand-accent text-white text-xs font-bold tracking-wider uppercase py-2 overflow-hidden whitespace-nowrap border-b border-orange-500/30">
+        <div class="inline-block animate-marquee">
+            <span class="mx-6">🔥 DROP EXCLUSIVO GM IMPORTS — TÊNIS & STREETWEAR IMPORTADOS</span>
+            <span class="mx-6">⚡ FRETE GRÁTIS PARA TODO O BRASIL EM COMPRAS ACIMA DE R$ 499</span>
+            <span class="mx-6">💳 PARCELE EM ATÉ 10X SEM JUROS NO CARTÃO</span>
+            <span class="mx-6">📦 ENVIO IMEDIATO COM CÓDIGO DE RASTREIO</span>
+            <span class="mx-6">🔥 DROP EXCLUSIVO GM IMPORTS — TÊNIS & STREETWEAR IMPORTADOS</span>
+            <span class="mx-6">⚡ FRETE GRÁTIS PARA TODO O BRASIL EM COMPRAS ACIMA DE R$ 499</span>
+            <span class="mx-6">💳 PARCELE EM ATÉ 10X SEM JUROS NO CARTÃO</span>
+            <span class="mx-6">📦 ENVIO IMEDIATO COM CÓDIGO DE RASTREIO</span>
+        </div>
+    </div>
+
+    <!-- 1. HEADER FIXO -->
+    <header class="sticky top-0 z-40 glass-header border-b border-brand-border transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 gap-4">
+                
+                <!-- Botão Menu Mobile -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 transition" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+
+                <!-- Logo GM IMPORTS -->
+                <a href="#inicio" class="flex items-center gap-2.5 group shrink-0">
+                    <div class="w-10 h-10 bg-brand-accent rounded-xl flex items-center justify-center font-display font-extrabold text-xl text-white tracking-tighter shadow-lg shadow-orange-600/20 group-hover:rotate-6 transition-transform">
+                        GM
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-extrabold text-xl sm:text-2xl tracking-tight leading-none text-white">
+                            GM <span class="text-brand-accent">IMPORTS</span>
+                        </span>
+                        <span class="text-[10px] tracking-[0.25em] text-zinc-400 uppercase font-semibold">Street & Sneakers</span>
+                    </div>
+                </a>
+
+                <!-- Links de Navegação (Desktop) -->
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-300">
+                    <a href="#inicio" class="hover:text-brand-accent transition">Início</a>
+                    <button onclick="filterFromNav('tenis')" class="hover:text-brand-accent transition">Tênis</button>
+                    <button onclick="filterFromNav('roupas')" class="hover:text-brand-accent transition">Roupas</button>
+                    <button onclick="filterFromNav('acessorios')" class="hover:text-brand-accent transition">Acessórios</button>
+                    <a href="#destaques" class="hover:text-brand-accent transition flex items-center gap-1.5">
+                        Lançamentos <span class="bg-brand-neon text-black text-[10px] font-extrabold px-1.5 py-0.5 rounded">DROP</span>
+                    </a>
+                    <a href="#sobre" class="hover:text-brand-accent transition">Sobre</a>
+                </nav>
+
+                <!-- Busca e Carrinho -->
+                <div class="flex items-center gap-3 sm:gap-4">
+                    <!-- Barra de Busca Desktop -->
+                    <div class="relative hidden sm:block w-48 md:w-64">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Buscar tênis, marca, peça..." 
+                            class="w-full bg-zinc-900/90 border border-brand-border text-sm text-white rounded-full pl-10 pr-4 py-2 focus:outline-none focus:border-brand-accent transition placeholder:text-zinc-500"
+                        >
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 text-xs"></i>
+                    </div>
+
+                    <!-- Botão Carrinho -->
+                    <button id="cart-toggle-btn" class="relative p-3 bg-zinc-900 hover:bg-zinc-800 border border-brand-border rounded-full transition group" aria-label="Abrir Carrinho">
+                        <i class="fa-solid fa-bag-shopping text-lg text-white group-hover:text-brand-accent transition"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-brand-accent text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Barra de Busca Mobile -->
+            <div class="pb-3 sm:hidden">
+                <div class="relative w-full">
+                    <input 
+                        type="text" 
+                        id="search-input-mobile" 
+                        placeholder="Buscar Dunk, Jordan, Moletom..." 
+                        class="w-full bg-zinc-900 border border-brand-border text-sm text-white rounded-full pl-10 pr-4 py-2.5 focus:outline-none focus:border-brand-accent transition placeholder:text-zinc-500"
+                    >
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brand-card border-b border-brand-border px-4 pt-2 pb-6 space-y-2">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-800 font-medium">Início</a>
+            <button onclick="filterFromNav('tenis'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-zinc-800 font-medium">Tênis Importados</button>
+            <button onclick="filterFromNav('roupas'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-zinc-800 font-medium">Roupas Streetwear</button>
+            <button onclick="filterFromNav('acessorios'); toggleMobileMenu()" class="w-full text-left py-2.5 px-3 rounded-lg hover:bg-zinc-800 font-medium">Acessórios</button>
+            <a href="#sobre" onclick="toggleMobileMenu()" class="block py-2.5 px-3 rounded-lg hover:bg-zinc-800 font-medium">Sobre a GM Imports</a>
+        </div>
+    </header>
+
+    <!-- 2. BANNER HERO IMPACTANTE -->
+    <section id="inicio" class="relative overflow-hidden border-b border-brand-border">
+        <!-- Imagem de Fundo com Overlay Escuro -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1920&q=80" 
+                alt="Sneaker Hype Background" 
+                class="w-full h-full object-cover object-center opacity-35 scale-105"
+                onerror="this.src='https://placehold.co/1920x900/121215/FF4D00?text=GM+IMPORTS+STREETWEAR'"
+            >
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/90 to-brand-black/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
+            <div class="max-w-2xl space-y-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-brand-accent/40 text-xs font-bold uppercase tracking-widest text-brand-accent">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
+                    Nova Coleção Importada 2026
+                </div>
+
+                <h1 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight uppercase leading-[0.95] text-white">
+                    O Hype das Ruas <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-orange-300">
+                        No Seu Estilo.
+                    </span>
+                </h1>
+
+                <p class="text-zinc-300 text-base sm:text-lg max-w-xl leading-relaxed">
+                    Os sneakers mais cobiçados do mundo e peças exclusivas de streetwear importado com curadoria <strong>GM Imports</strong>. Autenticidade, presença e entrega rápida em todo o Brasil.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#catalogo" class="px-8 py-4 bg-brand-accent hover:bg-brand-accentHover text-white font-bold uppercase tracking-wider text-sm rounded-xl shadow-lg shadow-orange-600/25 transition transform hover:-translate-y-0.5 flex items-center gap-2.5">
+                        Ver Coleção <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <button onclick="filterFromNav('tenis')" class="px-7 py-4 bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-700 text-white font-bold uppercase tracking-wider text-sm rounded-xl transition">
+                        Explorar Sneakers
+                    </button>
+                </div>
+
+                <!-- Métricas de Credibilidade -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-zinc-800/80 max-w-md">
+                    <div>
+                        <p class="font-display font-extrabold text-2xl text-white">+2.5k</p>
+                        <p class="text-xs text-zinc-400">Clientes Satisfeitos</p>
+                    </div>
+                    <div>
+                        <p class="font-display font-extrabold text-2xl text-brand-accent">100%</p>
+                        <p class="text-xs text-zinc-400">Qualidade Premium</p>
+                    </div>
+                    <div>
+                        <p class="font-display font-extrabold text-2xl text-white">24h</p>
+                        <p class="text-xs text-zinc-400">Despacho Rápido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SEÇÃO DE DESTAQUES / VANTAGENS -->
+    <section id="destaques" class="bg-brand-card border-b border-brand-border py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent/15 text-brand-accent flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm uppercase tracking-wide">Importados Selecionados</h3>
+                        <p class="text-xs text-zinc-400 mt-0.5">Curadoria exclusiva com acabamento impecável e caixa original.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent/15 text-brand-accent flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm uppercase tracking-wide">Envio para Todo Brasil</h3>
+                        <p class="text-xs text-zinc-400 mt-0.5">Entrega segura via Correios ou Transportadora com rastreio.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80">
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent/15 text-brand-accent flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm uppercase tracking-wide">Até 10x Sem Juros</h3>
+                        <p class="text-xs text-zinc-400 mt-0.5">Ou ganhe 5% OFF pagando à vista no PIX.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 & 4. CATÁLOGO DE PRODUTOS E FILTROS -->
+    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Cabeçalho da Seção e Controles -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <span class="text-brand-accent text-xs font-bold uppercase tracking-widest">Catálogo Oficial</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase mt-1">
+                    Destaques <span class="text-zinc-500">GM Imports</span>
+                </h2>
+            </div>
+
+            <!-- Filtros e Ordenação -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <!-- Botões de Categoria -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0" id="category-filters">
+                    <button data-cat="todos" class="cat-btn active px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-brand-accent text-white transition shrink-0">
+                        Todos
+                    </button>
+                    <button data-cat="tenis" class="cat-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-900 text-zinc-300 hover:bg-zinc-800 border border-brand-border transition shrink-0">
+                        Tênis
+                    </button>
+                    <button data-cat="roupas" class="cat-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-900 text-zinc-300 hover:bg-zinc-800 border border-brand-border transition shrink-0">
+                        Roupas
+                    </button>
+                    <button data-cat="acessorios" class="cat-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-900 text-zinc-300 hover:bg-zinc-800 border border-brand-border transition shrink-0">
+                        Acessórios
+                    </button>
+                </div>
+
+                <!-- Ordenação por Preço -->
+                <select id="sort-select" class="bg-zinc-900 border border-brand-border text-zinc-200 text-xs font-semibold rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-accent cursor-pointer">
+                    <option value="featured">Ordenar: Relevância</option>
+                    <option value="price-asc">Preço: Menor para Maior</option>
+                    <option value="price-desc">Preço: Maior para Menor</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Contador de Resultados -->
+        <div class="mb-6 flex items-center justify-between text-xs text-zinc-400">
+            <span id="results-count">Mostrando 8 produtos exclusivos</span>
+            <button id="clear-filters-btn" class="hidden text-brand-accent hover:underline font-semibold">
+                Limpar filtros
+            </button>
+        </div>
+
+        <!-- Grid Responsivo de Produtos -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Os cards serão renderizados dinamicamente via JavaScript -->
+        </div>
+
+        <!-- Estado Vazio (Caso busca não encontre nada) -->
+        <div id="empty-state" class="hidden text-center py-20 bg-brand-card rounded-3xl border border-brand-border">
+            <i class="fa-solid fa-box-open text-4xl text-zinc-600 mb-4"></i>
+            <h3 class="font-display font-bold text-xl text-white">Nenhum item encontrado</h3>
+            <p class="text-sm text-zinc-400 mt-1 mb-6">Tente buscar por outro termo ou limpe os filtros selecionados.</p>
+            <button onclick="resetAllFilters()" class="px-6 py-3 bg-brand-accent text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-brand-accentHover transition">
+                Ver Todos os Produtos
+            </button>
+        </div>
+    </main>
+
+    <!-- SEÇÃO SOBRE A LOJA -->
+    <section id="sobre" class="border-t border-brand-border bg-brand-card/60 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative rounded-3xl overflow-hidden border border-brand-border aspect-[16/10]">
+                    <img 
+                        src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1000&q=80" 
+                        alt="Cultura Streetwear GM Imports" 
+                        class="w-full h-full object-cover"
+                        onerror="this.src='https://placehold.co/800x500/121215/FFFFFF?text=GM+IMPORTS+CULTURE'"
+                    >
+                    <div class="absolute bottom-4 left-4 bg-brand-black/90 backdrop-blur-md border border-brand-border px-4 py-2 rounded-xl">
+                        <p class="text-xs font-bold text-brand-accent uppercase">Desde 2022</p>
+                        <p class="text-sm font-bold text-white">Referência em Hype & Streetwear</p>
+                    </div>
+                </div>
+                <div class="space-y-5">
+                    <span class="text-brand-accent text-xs font-bold uppercase tracking-widest">Sobre Nós</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white uppercase">
+                        Mais que uma loja, um <span class="text-brand-accent">Lifestyle</span>.
+                    </h2>
+                    <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                        A <strong>GM Imports</strong> nasceu da paixão pela cultura sneakerhead e pela moda urbana internacional. Trazemos para o Brasil os lançamentos mais disputados, edições limitadas e peças oversized com caimento perfeito.
+                    </p>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Cada item passa por rigorosa inspeção antes do envio, garantindo que você receba exatamente o visual, o conforto e a exclusividade que procura.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-brand-border text-sm font-semibold text-white transition">
+                            <i class="fa-brands fa-instagram text-brand-accent text-lg"></i> Siga @gmimports
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. RODAPÉ COMPLETO -->
+    <footer class="bg-brand-black border-t border-brand-border pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-brand-border">
+                
+                <!-- Coluna 1: Marca -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 bg-brand-accent rounded-lg flex items-center justify-center font-display font-extrabold text-lg text-white">
+                            GM
+                        </div>
+                        <span class="font-display font-extrabold text-xl text-white">
+                            GM <span class="text-brand-accent">IMPORTS</span>
+                        </span>
+                    </div>
+                    <p class="text-xs text-zinc-400 leading-relaxed">
+                        Sua loja definitiva de tênis importados, sneakers exclusivos e vestuário streetwear de alto padrão.
+                    </p>
+                    <div class="flex items-center gap-3 pt-1">
+                        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-zinc-900 hover:bg-brand-accent text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full bg-zinc-900 hover:bg-brand-accent text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="#" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-zinc-900 hover:bg-brand-accent text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Categorias -->
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Categorias</h4>
+                    <ul class="space-y-2.5 text-xs text-zinc-400">
+                        <li><button onclick="filterFromNav('tenis')" class="hover:text-brand-accent transition">Sneakers & Tênis</button></li>
+                        <li><button onclick="filterFromNav('roupas')" class="hover:text-brand-accent transition">Camisetas Oversized</button></li>
+                        <li><button onclick="filterFromNav('roupas')" class="hover:text-brand-accent transition">Moletons & Hoodies</button></li>
+                        <li><button onclick="filterFromNav('acessorios')" class="hover:text-brand-accent transition">Bonés & Shoulder Bags</button></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Atendimento -->
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Atendimento</h4>
+                    <ul class="space-y-2.5 text-xs text-zinc-400">
+                        <li><a href="#sobre" class="hover:text-brand-accent transition">Quem Somos</a></li>
+                        <li><a href="#destaques" class="hover:text-brand-accent transition">Prazos e Entregas</a></li>
+                        <li><a href="#destaques" class="hover:text-brand-accent transition">Trocas e Devoluções</a></li>
+                        <li><span class="text-zinc-300"><i class="fa-brands fa-whatsapp text-green-500 mr-1"></i> (11) 99999-9999</span></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4: Pagamento -->
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Formas de Pagamento</h4>
+                    <div class="flex flex-wrap gap-2 text-zinc-300 text-xl">
+                        <span class="px-3 py-1.5 bg-zinc-900 border border-brand-border rounded-lg text-xs font-bold flex items-center gap-1.5">
+                            <i class="fa-brands fa-pix text-teal-400"></i> PIX
+                        </span>
+                        <span class="px-3 py-1.5 bg-zinc-900 border border-brand-border rounded-lg text-xs font-bold flex items-center gap-1.5">
+                            <i class="fa-brands fa-cc-visa text-blue-400"></i> Visa
+                        </span>
+                        <span class="px-3 py-1.5 bg-zinc-900 border border-brand-border rounded-lg text-xs font-bold flex items-center gap-1.5">
+                            <i class="fa-brands fa-cc-mastercard text-orange-400"></i> Master
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-zinc-500 mt-4">
+                        Site 100% seguro com criptografia SSL.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+                <p>&copy; 2026 GM Imports Streetwear. Todos os direitos reservados.</p>
+                <p>Desenvolvido com estilo urbano.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 5. MODAL DE VISUALIZAÇÃO RÁPIDA (QUICK VIEW) -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="bg-brand-card border border-brand-border rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative animate-[fadeIn_0.2s_ease-out]">
+            
+            <!-- Botão Fechar Modal -->
+            <button id="close-modal-btn" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-zinc-900/90 hover:bg-brand-accent text-white flex items-center justify-center border border-brand-border transition" aria-label="Fechar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="modal-content" class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Preenchido via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. CARRINHO DE COMPRAS LATERAL (DRAWER) -->
+    <div id="cart-overlay" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-xs transition-opacity"></div>
+    
+    <aside id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-brand-card border-l border-brand-border shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        
+        <!-- Cabeçalho do Carrinho -->
+        <div class="p-6 border-b border-brand-border flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-bag-shopping text-brand-accent text-xl"></i>
+                <h3 class="font-display font-extrabold text-xl text-white uppercase">Seu Carrinho</h3>
+            </div>
+            <button id="close-cart-btn" class="w-9 h-9 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Lista de Itens do Carrinho -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Itens renderizados via JS -->
+        </div>
+
+        <!-- Rodapé do Carrinho (Subtotal & Checkout WhatsApp) -->
+        <div id="cart-footer" class="p-6 border-t border-brand-border bg-zinc-950/80 space-y-4">
+            <div class="space-y-1.5 text-sm">
+                <div class="flex justify-between text-zinc-400">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between text-zinc-400">
+                    <span>Frete Estimado</span>
+                    <span id="cart-shipping" class="text-brand-neon font-semibold">Grátis</span>
+                </div>
+                <div class="flex justify-between text-lg font-extrabold text-white pt-2 border-t border-zinc-800">
+                    <span>Total</span>
+                    <span id="cart-total" class="text-brand-accent">R$ 0,00</span>
+                </div>
+            </div>
+
+            <button onclick="checkoutWhatsApp()" class="w-full py-4 bg-green-600 hover:bg-green-500 text-white font-bold uppercase tracking-wider text-sm rounded-xl shadow-lg shadow-green-600/20 transition flex items-center justify-center gap-2.5">
+                <i class="fa-brands fa-whatsapp text-xl"></i> Finalizar Pedido no WhatsApp
+            </button>
+        </div>
+    </aside>
+
+    <!-- Toast de Notificação (Substitui alert()) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-zinc-900 border border-brand-accent text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3">
+            <div class="w-7 h-7 rounded-full bg-brand-accent flex items-center justify-center text-xs">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <p id="toast-title" class="text-xs font-bold uppercase tracking-wide text-brand-accent">Adicionado!</p>
+                <p id="toast-msg" class="text-xs text-zinc-300">Item adicionado ao carrinho.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT DA LOJA GM IMPORTS -->
+    <script>
+        // ==========================================
+        // 1. BANCO DE DADOS MOCK DE PRODUTOS
+        // ==========================================
+        const products = [
+            {
+                id: 1,
+                name: "Nike Dunk Low Retro Panda",
+                brand: "Nike • Importado",
+                category: "tenis",
+                price: 749.90,
+                oldPrice: 899.90,
+                badge: "Mais Vendido",
+                image: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=800&q=80",
+                sizes: ["38", "39", "40", "41", "42", "43"],
+                description: "O clássico absoluto das ruas. Couro premium bicolor preto e branco com entressola acolchoada para conforto o dia inteiro."
+            },
+            {
+                id: 2,
+                name: "Air Jordan 1 High Chicago Lost & Found",
+                brand: "Jordan Brand • Hype",
+                category: "tenis",
+                price: 1199.90,
+                oldPrice: 1450.00,
+                badge: "Exclusivo",
+                image: "https://images.unsplash.com/photo-1597045566677-8cf032ed6634?auto=format&fit=crop&w=800&q=80",
+                sizes: ["39", "40", "41", "42", "43"],
+                description: "Silhueta lendária de cano alto em vermelho varsity, branco e preto. Acabamento premium importado com caixa especial."
+            },
+            {
+                id: 3,
+                name: "Moletom Hoodie Oversized Heavyweight",
+                brand: "GM Studio • Streetwear",
+                category: "roupas",
+                price: 329.90,
+                oldPrice: 399.90,
+                badge: "Drop Novo",
+                image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80",
+                sizes: ["P", "M", "G", "GG"],
+                description: "Moletom encorpado 420gsm 100% algodão com modelagem boxy/oversized, capuz duplo estruturado e estampa em silk de alta definição."
+            },
+            {
+                id: 4,
+                name: "Adidas Campus 00s Core Black",
+                brand: "Adidas • Skate/Street",
+                category: "tenis",
+                price: 689.90,
+                oldPrice: null,
+                badge: "Tendência",
+                image: "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?auto=format&fit=crop&w=800&q=80",
+                sizes: ["38", "39", "40", "41", "42"],
+                description: "Inspirado nos anos 2000 com língua acolchoada, cadarços largos e camurça de alta resistência. O favorito da cena urbana."
+            },
+            {
+                id: 5,
+                name: "Camiseta Oversized Graphic Tee",
+                brand: "Essentials • Importada",
+                category: "roupas",
+                price: 189.90,
+                oldPrice: 239.90,
+                badge: "-20% OFF",
+                image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80",
+                sizes: ["P", "M", "G", "GG"],
+                description: "Malha penteada fio 30.1 de gramatura alta, gola canelada reforçada de 3cm e caimento largo autêntico."
+            },
+            {
+                id: 6,
+                name: "Jaqueta Corta-Vento Urban Tech",
+                brand: "The North Hype • Importada",
+                category: "roupas",
+                price: 459.90,
+                oldPrice: 549.90,
+                badge: "Limitado",
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80",
+                sizes: ["P", "M", "G", "GG"],
+                description: "Tecido repelente à água com forro respirável, bolsos utilitários com zíper selado e ajuste na barra."
+            },
+            {
+                id: 7,
+                name: "Nike Air Force 1 '07 Triple White",
+                brand: "Nike • Clássico",
+                category: "tenis",
+                price: 649.90,
+                oldPrice: null,
+                badge: "Clássico",
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80",
+                sizes: ["38", "39", "40", "41", "42", "43"],
+                description: "Indispensável em qualquer rotação. Cabedal todo em couro branco liso com amortecimento Nike Air."
+            },
+            {
+                id: 8,
+                name: "Boné New Era 59FIFTY NY Street",
+                brand: "New Era • Importado",
+                category: "acessorios",
+                price: 179.90,
+                oldPrice: 219.90,
+                badge: "Importado",
+                image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80",
+                sizes: ["Único"],
+                description: "Boné aba reta estruturado com bordado frontal em alto relevo e selo de autenticidade na aba."
+            }
+        ];
+
+        // ==========================================
+        // 2. ESTADO DA APLICAÇÃO
+        // ==========================================
+        let currentCategory = 'todos';
+        let currentSearch = '';
+        let currentSort = 'featured';
+        let selectedSizes = {}; // Armazena o tamanho escolhido por produto no card: { productId: "40" }
+        let cart = JSON.parse(localStorage.getItem('gm_imports_cart')) || [];
+
+        // Inicializa tamanhos padrão para cada produto
+        products.forEach(p => {
+            selectedSizes[p.id] = p.sizes[Math.floor(p.sizes.length / 2)];
+        });
+
+        // ==========================================
+        // 3. FORMATAÇÃO DE MOEDA (BRL)
+        // ==========================================
+        function formatBRL(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        // ==========================================
+        // 4. RENDERIZAÇÃO DO CATÁLOGO DE PRODUTOS
+        // ==========================================
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const emptyState = document.getElementById('empty-state');
+            const resultsCount = document.getElementById('results-count');
+            const clearBtn = document.getElementById('clear-filters-btn');
+
+            // Filtragem
+            let filtered = products.filter(product => {
+                const matchCategory = currentCategory === 'todos' || product.category === currentCategory;
+                const searchLower = currentSearch.toLowerCase().trim();
+                const matchSearch = !searchLower || 
+                    product.name.toLowerCase().includes(searchLower) || 
+                    product.brand.toLowerCase().includes(searchLower) ||
+                    product.category.toLowerCase().includes(searchLower);
+                return matchCategory && matchSearch;
+            });
+
+            // Ordenação
+            if (currentSort === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            // Atualiza contador e botão limpar
+            resultsCount.textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'produto exclusivo' : 'produtos exclusivos'}`;
+            if (currentCategory !== 'todos' || currentSearch !== '') {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            // Estado Vazio
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+
+            // Renderiza os cards
+            grid.innerHTML = filtered.map(product => {
+                const activeSize = selectedSizes[product.id];
+                const installment = formatBRL(product.price / 10);
+
+                return `
+                <article class="product-card bg-brand-card border border-brand-border rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-brand-accent/60 transition-all duration-300 shadow-lg">
+                    
+                    <!-- Área da Imagem (Clicável para Quick View) -->
+                    <div>
+                        <div class="relative aspect-square bg-zinc-900 overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
+                            <img 
+                                src="${product.image}" 
+                                alt="${product.name}" 
+                                class="product-img w-full h-full object-cover transition-transform duration-500"
+                                onerror="this.src='https://placehold.co/600x600/18181B/FF4D00?text=${encodeURIComponent(product.name)}'"
+                            >
+                            
+                            <!-- Badge Superior -->
+                            ${product.badge ? `
+                                <span class="absolute top-3 left-3 bg-brand-black/85 backdrop-blur-md border border-brand-border text-white text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg">
+                                    ${product.badge}
+                                </span>
+                            ` : ''}
+
+                            <!-- Botão Visualização Rápida no Hover -->
+                            <button 
+                                type="button"
+                                aria-label="Detalhes rápidos"
+                                class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-brand-black/90 text-white hover:bg-brand-accent flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+                            >
+                                <i class="fa-solid fa-eye text-xs"></i>
+                            </button>
+                        </div>
+
+                        <!-- Informações do Produto -->
+                        <div class="p-4 pb-2">
+                            <p class="text-[11px] font-semibold uppercase tracking-wider text-brand-accent">${product.brand}</p>
+                            <h3 
+                                onclick="openProductModal(${product.id})" 
+                                class="font-bold text-white text-base mt-1 line-clamp-1 cursor-pointer hover:text-brand-accent transition"
+                                title="${product.name}"
+                            >
+                                ${product.name}
+                            </h3>
+
+                            <!-- Preço -->
+                            <div class="mt-2.5 flex items-baseline gap-2">
+                                <span class="font-display font-extrabold text-xl text-white">${formatBRL(product.price)}</span>
+                                ${product.oldPrice ? `<span class="text-xs text-zinc-500 line-through">${formatBRL(product.oldPrice)}</span>` : ''}
+                            </div>
+                            <p class="text-[11px] text-zinc-400">ou 10x de ${installment} sem juros</p>
+                        </div>
+                    </div>
+
+                    <!-- Seletor de Tamanho & Botão Comprar -->
+                    <div class="p-4 pt-3 space-y-3">
+                        <div>
+                            <span class="block text-[10px] uppercase tracking-wider text-zinc-400 font-semibold mb-1.5">Tamanho:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${product.sizes.map(size => `
+                                    <button 
+                                        type="button"
+                                        onclick="selectCardSize(${product.id}, '${size}')"
+                                        class="px-2.5 py-1 rounded-lg text-xs font-bold transition ${
+                                            activeSize === size 
+                                            ? 'bg-white text-black shadow-sm' 
+                                            : 'bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800'
+                                        }"
+                                    >
+                                        ${size}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <button 
+                            type="button"
+                            onclick="addToCart(${product.id}, selectedSizes[${product.id}])"
+                            class="w-full py-3 bg-brand-accent hover:bg-brand-accentHover active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition flex items-center justify-center gap-2 shadow-md shadow-orange-600/15"
+                        >
+                            <i class="fa-solid fa-cart-plus"></i> Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </article>
+                `;
+            }).join('');
+        }
+
+        // Seleciona tamanho direto no card
+        function selectCardSize(productId, size) {
+            selectedSizes[productId] = size;
+            renderProducts();
+        }
+
+        // ==========================================
+        // 5. MODAL DE VISUALIZAÇÃO RÁPIDA (QUICK VIEW)
+        // ==========================================
+        let modalSelectedSize = null;
+
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            modalSelectedSize = selectedSizes[productId] || product.sizes[0];
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('modal-content');
+
+            renderModalContent(product);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function renderModalContent(product) {
+            const content = document.getElementById('modal-content');
+            const pixPrice = formatBRL(product.price * 0.95);
+
+            content.innerHTML = `
+                <!-- Imagem -->
+                <div class="bg-zinc-900 aspect-square md:aspect-auto relative">
+                    <img 
+                        src="${product.image}" 
+                        alt="${product.name}" 
+                        class="w-full h-full object-cover"
+                        onerror="this.src='https://placehold.co/600x600/18181B/FF4D00?text=${encodeURIComponent(product.name)}'"
+                    >
+                    ${product.badge ? `
+                        <span class="absolute top-4 left-4 bg-brand-accent text-white text-xs font-extrabold uppercase px-3 py-1 rounded-lg">
+                            ${product.badge}
+                        </span>
+                    ` : ''}
+                </div>
+
+                <!-- Detalhes -->
+                <div class="p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-accent">${product.brand}</span>
+                        <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1 leading-tight">${product.name}</h3>
+                        
+                        <div class="mt-4 p-3.5 rounded-2xl bg-zinc-900/90 border border-brand-border">
+                            <div class="flex items-baseline gap-2.5">
+                                <span class="font-display font-extrabold text-2xl text-white">${formatBRL(product.price)}</span>
+                                ${product.oldPrice ? `<span class="text-sm text-zinc-500 line-through">${formatBRL(product.oldPrice)}</span>` : ''}
+                            </div>
+                            <p class="text-xs text-brand-neon font-semibold mt-1">
+                                <i class="fa-brands fa-pix mr-1"></i> ${pixPrice} à vista no PIX (5% OFF)
+                            </p>
+                        </div>
+
+                        <p class="text-sm text-zinc-300 mt-4 leading-relaxed">
+                            ${product.description}
+                        </p>
+
+                        <!-- Seleção de Tamanho no Modal -->
+                        <div class="mt-6">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-xs font-bold uppercase tracking-wider text-zinc-300">Escolha o Tamanho:</span>
+                                <span class="text-[11px] text-zinc-400">Forma Padrão BR</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                ${product.sizes.map(size => `
+                                    <button 
+                                        type="button"
+                                        onclick="selectModalSize(${product.id}, '${size}')"
+                                        class="min-w-[44px] px-3.5 py-2 rounded-xl text-xs font-extrabold transition ${
+                                            modalSelectedSize === size 
+                                            ? 'bg-brand-accent text-white shadow-lg shadow-orange-600/25' 
+                                            : 'bg-zinc-900 text-zinc-300 hover:bg-zinc-800 border border-brand-border'
+                                        }"
+                                    >
+                                        ${size}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button 
+                        type="button"
+                        onclick="addToCart(${product.id}, modalSelectedSize); closeProductModal();"
+                        class="w-full py-4 bg-brand-accent hover:bg-brand-accentHover text-white font-bold uppercase tracking-wider text-sm rounded-xl shadow-lg shadow-orange-600/25 transition flex items-center justify-center gap-2"
+                    >
+                        <i class="fa-solid fa-bag-shopping"></i> Comprar Agora
+                    </button>
+                </div>
+            `;
+        }
+
+        function selectModalSize(productId, size) {
+            modalSelectedSize = size;
+            selectedSizes[productId] = size;
+            const product = products.find(p => p.id === productId);
+            renderModalContent(product);
+            renderProducts();
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // ==========================================
+        // 6. CARRINHO DE COMPRAS (DRAWER) & WHATSAPP
+        // ==========================================
+        function addToCart(productId, size) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingIndex = cart.findIndex(item => item.id === productId && item.size === size);
+
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    size: size,
+                    quantity: 1
+                });
+            }
+
+            saveAndRenderCart();
+            showToast("Adicionado ao Carrinho", `${product.name} (Tam: ${size})`);
+        }
+
+        function updateQuantity(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            saveAndRenderCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveAndRenderCart();
+        }
+
+        function saveAndRenderCart() {
+            localStorage.setItem('gm_imports_cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const badge = document.getElementById('cart-badge');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const shippingEl = document.getElementById('cart-shipping');
+            const totalEl = document.getElementById('cart-total');
+            const footer = document.getElementById('cart-footer');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badge.textContent = totalItems;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center py-12">
+                        <div class="w-16 h-16 rounded-full bg-zinc-900 border border-brand-border flex items-center justify-center text-zinc-500 text-2xl mb-4">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-white">Seu carrinho está vazio</h4>
+                        <p class="text-xs text-zinc-400 max-w-xs mt-1 mb-6">Explore nossa coleção de tênis e roupas importadas para montar seu kit.</p>
+                        <button onclick="closeCart()" class="px-6 py-3 bg-brand-accent text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-brand-accentHover transition">
+                            Explorar Loja
+                        </button>
+                    </div>
+                `;
+                footer.classList.add('hidden');
+                return;
+            }
+
+            footer.classList.remove('hidden');
+
+            container.innerHTML = cart.map((item, idx) => `
+                <div class="flex gap-4 p-3.5 rounded-2xl bg-zinc-900/80 border border-brand-border">
+                    <img 
+                        src="${item.image}" 
+                        alt="${item.name}" 
+                        class="w-20 h-20 rounded-xl object-cover bg-zinc-800 shrink-0"
+                        onerror="this.src='https://placehold.co/150x150/18181B/FF4D00?text=GM'"
+                    >
+                    <div class="flex-1 min-w-0 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start gap-2">
+                                <h5 class="font-bold text-sm text-white truncate">${item.name}</h5>
+                                <button onclick="removeFromCart(${idx})" class="text-zinc-500 hover:text-red-500 transition text-xs p-1" aria-label="Remover item">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-zinc-400">Tamanho: <strong class="text-white">${item.size}</strong></p>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="font-bold text-sm text-brand-accent">${formatBRL(item.price * item.quantity)}</span>
+                            
+                            <!-- Controles de Quantidade -->
+                            <div class="flex items-center gap-2 bg-brand-black border border-brand-border rounded-lg px-2 py-1">
+                                <button onclick="updateQuantity(${idx}, -1)" class="text-zinc-400 hover:text-white text-xs w-5 h-5 flex items-center justify-center">-</button>
+                                <span class="text-xs font-bold text-white min-w-[16px] text-center">${item.quantity}</span>
+                                <button onclick="updateQuantity(${idx}, 1)" class="text-zinc-400 hover:text-white text-xs w-5 h-5 flex items-center justify-center">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 499 ? 0 : 29.90;
+            const total = subtotal + shipping;
+
+            subtotalEl.textContent = formatBRL(subtotal);
+            shippingEl.textContent = shipping === 0 ? 'GRÁTIS' : formatBRL(shipping);
+            shippingEl.className = shipping === 0 ? 'text-brand-neon font-bold' : 'text-zinc-200 font-semibold';
+            totalEl.textContent = formatBRL(total);
+        }
+
+        function openCart() {
+            document.getElementById('cart-overlay').classList.remove('hidden');
+            document.getElementById('cart-drawer').classList.remove('translate-x-full');
+        }
+
+        function closeCart() {
+            document.getElementById('cart-overlay').classList.add('hidden');
+            document.getElementById('cart-drawer').classList.add('translate-x-full');
+        }
+
+        // Simulação de Checkout via WhatsApp
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return;
+
+            let message = "🔥 *NOVO PEDIDO - GM IMPORTS* 🔥\n\nOlá! Gostaria de finalizar o seguinte pedido:\n\n";
+            
+            cart.forEach((item, i) => {
+                message += `*${i + 1}. ${item.name}*\n`;
+                message += `   • Tamanho: ${item.size}\n`;
+                message += `   • Qtd: ${item.quantity}x — ${formatBRL(item.price * item.quantity)}\n\n`;
+            });
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 499 ? 0 : 29.90;
+            const total = subtotal + shipping;
+
+            message += `📦 *Frete:* ${shipping === 0 ? 'Grátis' : formatBRL(shipping)}\n`;
+            message += `💰 *Total do Pedido:* ${formatBRL(total)}\n\n`;
+            message += "Aguardo instruções para pagamento!";
+
+            const phone = "5511999999999"; // Número ilustrativo da GM Imports
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        // ==========================================
+        // 7. EVENT LISTENERS & NAVEGAÇÃO
+        // ==========================================
+        // Filtros de Categoria
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.cat-btn').forEach(b => {
+                    b.classList.remove('bg-brand-accent', 'text-white');
+                    b.classList.add('bg-zinc-900', 'text-zinc-300', 'border', 'border-brand-border');
+                });
+                btn.classList.remove('bg-zinc-900', 'text-zinc-300', 'border', 'border-brand-border');
+                btn.classList.add('bg-brand-accent', 'text-white');
+
+                currentCategory = btn.dataset.cat;
+                renderProducts();
+            });
+        });
+
+        function filterFromNav(category) {
+            const targetBtn = document.querySelector(`.cat-btn[data-cat="${category}"]`);
+            if (targetBtn) targetBtn.click();
+            document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetAllFilters() {
+            currentCategory = 'todos';
+            currentSearch = '';
+            currentSort = 'featured';
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-input-mobile').value = '';
+            document.getElementById('sort-select').value = 'featured';
+            const allBtn = document.querySelector('.cat-btn[data-cat="todos"]');
+            if (allBtn) allBtn.click();
+        }
+
+        document.getElementById('clear-filters-btn').addEventListener('click', resetAllFilters);
+
+        // Busca em Tempo Real (Desktop e Mobile)
+        ['search-input', 'search-input-mobile'].forEach(id => {
+            document.getElementById(id).addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                // Sincroniza os dois inputs
+                document.getElementById('search-input').value = currentSearch;
+                document.getElementById('search-input-mobile').value = currentSearch;
+                renderProducts();
+            });
+        });
+
+        // Ordenação
+        document.getElementById('sort-select').addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderProducts();
+        });
+
+        // Controles do Modal e Carrinho
+        document.getElementById('close-modal-btn').addEventListener('click', closeProductModal);
+        document.getElementById('product-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'product-modal') closeProductModal();
+        });
+
+        document.getElementById('cart-toggle-btn').addEventListener('click', openCart);
+        document.getElementById('close-cart-btn').addEventListener('click', closeCart);
+        document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+        // Menu Mobile
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // Toast Feedback
+        let toastTimeout;
+        function showToast(title, msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-msg').textContent = msg;
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 2800);
+        }
+
+        // Inicialização
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            renderCart();
+        });
+    </script>
+</body>
+</html>
